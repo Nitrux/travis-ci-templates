@@ -1,0 +1,19 @@
+dist: focal
+
+arch:
+  - arm64
+
+before_install:
+  - gem install package_cloud
+
+script:
+  - sudo ./travis-build.sh
+  - package_cloud push nitrux/repo/debian/trixie *.deb
+
+branches:
+  only:
+    - arm64
+
+notifications:
+  email: false
+
